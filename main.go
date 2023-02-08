@@ -1,7 +1,6 @@
 package main
 
 import (
-	"crud/credenciais"
 	"crud/servidor"
 	"fmt"
 	"log"
@@ -19,8 +18,7 @@ func main() {
 	router.HandleFunc("/usuarios/{id}", servidor.BuscarUsuario).Methods(http.MethodGet)
 	router.HandleFunc("/usuarios/{id}", servidor.AtualizarUsuario).Methods(http.MethodPut)
 	router.HandleFunc("/usuarios/{id}", servidor.DeletarUsuario).Methods(http.MethodDelete)
-	credenciais := credenciais.Credenciais("STRING")
-	fmt.Println(credenciais)
+
 	fmt.Println("Escutando na porta 5000")
 	log.Fatal(http.ListenAndServe(":5000", router))
 }
